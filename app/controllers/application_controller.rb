@@ -28,6 +28,11 @@ class ApplicationController < Sinatra::Base
 
 	get "/login" do
 		 user = User.find_by(:username => params[:username])
+		 if user
+			 redirect "/success"
+	 else
+			 redirect "/failure"
+	 end
 		erb :login
 	end
 
